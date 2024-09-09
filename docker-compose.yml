@@ -10,6 +10,8 @@ services:
       - .env
     networks:
       - dev-network
+    depends_on:
+      - db
 
   frontend:
     build:
@@ -34,7 +36,26 @@ services:
       - dev-network
     depends_on:
       - backend
+    
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: mongeul
+      MYSQL_USER: TEST
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+      TZ: Asia/Seoul
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - dev-network
 
 networks:
   dev-network:
     driver: bridge
+
+volumes:
+  db_data:
