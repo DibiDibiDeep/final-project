@@ -1,0 +1,40 @@
+# version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./Final_back
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    env_file:
+      - .env
+    networks:
+      - dev-network
+
+  frontend:
+    build:
+      context: ./Final_front
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    env_file:
+      - .env
+    networks:
+      - dev-network
+    depends_on:
+      - backend
+
+  ml:
+    build:
+      context: ./Final_ml
+    ports:
+      - "${ML_PORT:-8000}:8000"
+    env_file:
+      - .env
+    networks:
+      - dev-network
+    depends_on:
+      - backend
+
+networks:
+  dev-network:
+    driver: bridge
