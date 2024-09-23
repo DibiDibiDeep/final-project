@@ -32,9 +32,12 @@ services:
       - .env
     networks:
       - dev-network
+      - milvus
     depends_on:
       - backend
 
 networks:
   dev-network:
     driver: bridge
+  milvus:
+    external: true
