@@ -3,7 +3,7 @@
 services:
   backend:
     build:
-      context: ./Final_back
+      context: ./Final-back
     ports:
       - "${BACKEND_PORT:-8080}:8080"
     env_file:
@@ -14,7 +14,7 @@ services:
 
   frontend:
     build:
-      context: ./Final_front
+      context: ./Final-front
     ports:
       - "${FRONTEND_PORT:-3000}:3000"
     env_file:
@@ -26,7 +26,7 @@ services:
 
   ml:
     build:
-      context: ./Final_ml
+      context: ./Final-ml
     ports:
       - "${ML_PORT:-8000}:8000"
     env_file:
