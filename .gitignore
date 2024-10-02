@@ -1,5 +1,6 @@
 script.sh
 volumes/
+redis-data/
 
 frontend.env
 backend.env

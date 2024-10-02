@@ -11,6 +11,8 @@ services:
     networks:
       - dev-network
       - milvus
+    depends_on:
+      - redis
 
   frontend:
     build:
@@ -36,6 +38,24 @@ services:
       - milvus
     depends_on:
       - backend
+
+  redis: # container name
+    image: redis:6.2.6-alpine
+    ports: # 바인딩할 포트:내부 포트 (redis desktop maneager)
+      # - ${REDIS_BINDING_PORT:-6379}:${REDIS_PORT:-6379}
+      - "6389:6379"
+    env_file:
+      - ./backend.env
+    command: >
+      sh -c "apk add --no-cache gettext &&
+             envsubst < /usr/local/etc/redis/redis.config.template > /usr/local/etc/redis/redis.config &&
+             redis-server /usr/local/etc/redis/redis.config"
+    volumes:
+      - ${REDIS_DATA_PATH:-./redis-data}:/data
+      - ${REDIS_CONFIG_FILE:-./redis.config.template}:/usr/local/etc/redis/redis.config.template
+    restart: always
+    networks:
+      - dev-network
 
 networks:
   dev-network:
