@@ -71,7 +71,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          password: ${{ secrets.EC2_PASSWORD }}
+          password: ${{ secrets.SSH_PRIVATE_KEY }}
         #   port: ${{ secrets.PORT }}
           script: |
             cd dev/
