@@ -1,13 +1,26 @@
 # .github/workflows/ci.yml
 
+# 우선 main에 push(submodule commit update)될때마다 실행되도록 설정
+# 이후:
+#
+#   1. 버전 태그, 릴리즈 노트 작성할 때 마다 실행되도록 설정
+#       on:
+#         push:
+#           tags:
+#             - 'v*.*.*'  # 태그 패턴을 지정. 여기서는 'v'로 시작하는 버전 태그에 대해 트리거
+#
+#   2. 각 서브모듈에서 main에 merge될 때마다 실행되도록 설정 (repository_dispatch)
+#       on:
+#         repository_dispatch:
+#           types: [update-submodule]
+
+
 name: CI for final-project
 
-# 우선 main에 push(submodule commit update)될때마다 실행되도록 설정
 on: 
   push: 
     branches:
-      - setting/action 
-      # - main 
+      - main 
 
 jobs:
   build:
@@ -20,11 +33,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-        #   password: ${{ secrets.EC2_PASSWORD }}
           script: |
             cd dev/final-project-production/
             echo "Before update:"
-            # git submodule status
-            # git submodule update --remote
-            # echo "After update:"
-            # git submodule status
+            git submodule status
+            git submodule update --remote
+            echo "After update:"
+            git submodule status

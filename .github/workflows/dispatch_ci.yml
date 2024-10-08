@@ -1,0 +1,40 @@
+# .github/workflows/ci-cd.yml
+
+name: CI/CD for Production
+
+on:
+  repository_dispatch:
+    types: [update-submodule]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # GITHUB_TOKEN에 콘텐츠 쓰기 권한 부여
+      id-token: write  # 필요한 경우 추가 권한 부여
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: print repository_dispatch event info
+        run: 'echo "Submodule: ${{ github.event.client_payload.submodule }}"'
+
+      - name: EC2 서버로 배포
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          script: |
+            cd dev/final-project-production/
+            git submodule status
+            git pull origin main
+            git submodule update --remote ${{ github.event.client_payload.submodule }}
+            docker compose build ${{ github.event.client_payload.servicename }}
+            docker compose up -d ${{ github.event.client_payload.servicename }}
+            git submodule status
