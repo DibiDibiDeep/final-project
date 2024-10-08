@@ -44,18 +44,35 @@ on: # 이럴때 실행 해달라
    # main의 정보에 push될때마다 실행을 해달라
 
 # 실행
-jobs:
-  SSH:
-    runs-on: ubuntu-latest # 우분투 최신버전으로 컴퓨터를 준비하라 ()
+# jobs:
+#   SSH:
+#     runs-on: ubuntu-latest # 우분투 최신버전으로 컴퓨터를 준비하라 ()
 
+#     steps:
+#       - uses: actions/checkout@v3 # 레파지토리 참고하라
+#       - name: ssh to ec2 # ec2에 접속하라.
+#         uses: appleboy/ssh-action@master # 접속 제공 코드
+#         with:
+#           key: ${{ secrets.SSH_PRIVATE_KEY }} # 키페어 필요
+#           host: ${{ secrets.EC2_HOST }} # ip
+#           username: ${{ secrets.EC2_USER }} # 해당 유저 접속 
+#           script: | # 실행 할 코드
+#             cd dev/  #경로 이동 (실제 존재하는 경로로 이동해야한다.)
+#             touch hello.txt
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 # 레파지토리 참고하라
-      - name: ssh to ec2 # ec2에 접속하라.
-        uses: appleboy/ssh-action@master # 접속 제공 코드
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }} # 키페어 필요
-          host: ${{ secrets.EC2_HOST }} # ip
-          username: ${{ secrets.EC2_USER }} # 해당 유저 접속 
-          script: | # 실행 할 코드
-            cd dev/  #경로 이동 (실제 존재하는 경로로 이동해야한다.)
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          password: ${{ secrets.EC2_PASSWORD }}
+        #   port: ${{ secrets.PORT }}
+          script: |
+            cd dev/
             touch hello.txt
