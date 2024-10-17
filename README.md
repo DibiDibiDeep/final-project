@@ -73,7 +73,7 @@
             <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/hyun987"/>
         </td>
         <td align="center">
-            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/in-sukim"/>
+            <img height="120px" weight="120px" width="120px" src="https://github.com/user-attachments/assets/eb4d8fb3-4437-4fc0-8f00-d2480f37bca7"/>
         </td>        
         <td align="center">
             <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/okchang95"/>
