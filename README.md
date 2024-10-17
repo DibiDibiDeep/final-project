@@ -61,22 +61,22 @@
     </tr>
     <tr height="160px">
         <td align="center">
-            <img src="https://avatars.githubusercontent.com/nunu1101"/>
+            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/nunu1101"/>
         </td>
         <td align="center">
-            <img src="https://avatars.githubusercontent.com/silver-or"/>
+            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/silver-or"/>
         </td>
         <td align="center">
-            <img src="https://avatars.githubusercontent.com/eunseongjo"/>
+            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/eunseongjo"/>
         </td>
         <td align="center">
-            <img src="https://avatars.githubusercontent.com/hyun987"/>
+            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/hyun987"/>
         </td>
         <td align="center">
-            <img src="https://avatars.githubusercontent.com/in-sukim"/>
+            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/in-sukim"/>
         </td>        
         <td align="center">
-            <img src="https://avatars.githubusercontent.com/okchang95"/>
+            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/okchang95"/>
         </td>
     </tr>
     <tr>
