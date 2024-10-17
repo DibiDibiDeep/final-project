@@ -9,7 +9,7 @@
 <!-- pdf -->
 <!-- [발표자료 PDF](images/몽글몽글.pdf) -->
 <!-- pdf title -->
-<img height="500px" weight="500px" src="images/title.png"/>
+<img src="images/title.png"/>
 
 </div>
 
@@ -61,22 +61,22 @@
     </tr>
     <tr height="160px">
         <td align="center">
-            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/nunu1101"/>
+            <img src="https://avatars.githubusercontent.com/nunu1101"/>
         </td>
         <td align="center">
-            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/silver-or"/>
+            <img src="https://avatars.githubusercontent.com/silver-or"/>
         </td>
         <td align="center">
-            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/eunseongjo"/>
+            <img src="https://avatars.githubusercontent.com/eunseongjo"/>
         </td>
         <td align="center">
-            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/hyun987"/>
+            <img src="https://avatars.githubusercontent.com/hyun987"/>
         </td>
         <td align="center">
-            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/in-sukim"/>
+            <img src="https://avatars.githubusercontent.com/in-sukim"/>
         </td>        
         <td align="center">
-            <img height="120px" weight="120px" src="https://avatars.githubusercontent.com/okchang95"/>
+            <img src="https://avatars.githubusercontent.com/okchang95"/>
         </td>
     </tr>
     <tr>
